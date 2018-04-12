@@ -21,7 +21,7 @@ class DefaultController extends Controller
 
     public function nemrodSimpleAction(Request $request)
     {
-        $products = $this->container->get('rm')->getRepository('skos:Concept')->findAll();
+        $products = $this->container->get('rm')->getRepository('pers:DoiPublication')->findAll();
         dump($products);
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
@@ -30,10 +30,10 @@ class DefaultController extends Controller
     }
    public function nemrodQueryBuilderAction(Request $request)
     {
-        $qb = $this->container->get('rm')->getRepository('skos:Concept')->getQueryBuilder();
+        $qb = $this->container->get('rm')->getRepository('pers:DoiPublication')->getQueryBuilder();
         $qb->select('?s ?label')
-           ->where('?s text:query (skos:prefLabel \'Arch*\' 25)')
-           ->andWhere('?s skos:prefLabel ?label')
+           ->where('?s text:query (rdfs:label \'A*\' 25)')
+           ->andWhere('?s rdfs:label ?label')
            ->andWhere('filter (lang(?label) = \'en\')');
         $result = $qb->getQuery()->execute();
         dump($result);
@@ -45,7 +45,7 @@ class DefaultController extends Controller
 
     public function nemrodFindByAction(Request $request)
     {
-        $products = $this->container->get('rm')->getRepository('skos:Concept')->findBy(array('skos:prefLabel' => '"Architecture"@en'));;
+        $products = $this->container->get('rm')->getRepository('pers:DoiPublication')->findBy(array('rdfs:label' => '"Architecture"@en'));;
         foreach ($products as $product) {
             dump($product);
         }

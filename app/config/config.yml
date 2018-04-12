@@ -78,3 +78,4 @@ nemrod:
     dc: "http://purl.org/dc/terms/"
     #add the namespaces you need
     mycompany: "http://www.example.org/mycompany"
+    pers: "http://example.org/perscido#"
