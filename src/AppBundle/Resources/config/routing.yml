@@ -1,0 +1,9 @@
+perscido.nemrod_simple:
+    path:     /nemrod1
+    defaults: { _controller: AppBundle:Default:nemrodSimple}
+perscido.nemrod_build_query:
+    path:     /nemrod2
+    defaults: { _controller: AppBundle:Default:nemrodQueryBuilder}
+perscido.nemrod_find_by:
+    path:     /nemrod3
+    defaults: { _controller: AppBundle:Default:nemrodFindBy}
